@@ -1,0 +1,32 @@
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 30px;
+    }
+
+    #students-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 通用样式 */
+.class-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #4a69bd;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+main {
+    margin-top: 60px; /* 为固定的头部留出空间 */
+    padding: 20px;
+}

@@ -1,0 +1,65 @@
+.activities-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.activities-page h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* 活动列表样式 */
+.activity-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.activity-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.activity-item h2 {
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+/* 投票系统样式 */
+.voting-system {
+    margin-top: 40px;
+}
+
+.voting-system h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.vote-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.vote-option input[type="radio"] {
+    margin-right: 10px;
+}
+
+.vote-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.vote-button:hover {
+    background-color: #2980b9;
+}

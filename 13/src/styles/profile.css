@@ -1,0 +1,163 @@
+#profile-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #ffd1dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#profile-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.avatar-container:hover #profile-avatar {
+  filter: brightness(70%);
+}
+
+.avatar-hover-text {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.avatar-tip {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.info-container {
+  background-color: #ffd1dc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.info-item strong {
+  flex: 1;
+}
+
+.info-item span, .info-item .motto-display, .info-item .motto-edit {
+  flex: 2;
+}
+
+.motto-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.motto-edit {
+  display: flex;
+  flex-direction: column;
+}
+
+.motto-edit input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ffb3c6;
+  border-radius: 4px;
+}
+
+.motto-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #FF00FF; /* 品红色 */
+  color: white;
+}
+
+.save-btn {
+  background-color: #4CAF50; /* 绿色 */
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f44336; /* 红色 */
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.logout-btn {
+  background-color: #f25d8e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: #e03f7d;
+}
+
+@media (max-width: 768px) {
+  .profile-info {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .avatar-container {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+
+  #profile-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .info-container {
+    flex: 1;
+  }
+}

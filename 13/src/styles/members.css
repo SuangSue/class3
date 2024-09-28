@@ -1,0 +1,153 @@
+#members-page {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.members-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 3px solid #4a69bd;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #f1f2f6;
+}
+
+.class-info {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.teachers, .students {
+    margin-bottom: 40px;
+}
+
+.teachers h3, .students h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#teachers-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+#students-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    row-gap: 50px; /* 增加行间距 */
+}
+
+.desk {
+    background-color: #ffd700;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: calc(25% - 22.5px); /* 调整为每行四张课桌 */
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+.member-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 45%;
+    position: relative;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+}
+
+.member-avatar {
+    width: 60px; /* 稍微减小头像尺寸 */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.member-name {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.member-info {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.member-card:hover .member-info {
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    .desk {
+        width: calc(33.33% - 20px); /* 三列布局 */
+    }
+}
+
+@media (max-width: 992px) {
+    .desk {
+        width: calc(50% - 15px); /* 两列布局 */
+    }
+}
+
+@media (max-width: 768px) {
+    .desk {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .member-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .member-info {
+        position: static;
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .member-card {
+        width: 100%;
+    }
+
+    .member-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .member-name {
+        font-size: 0.8em;
+    }
+
+    .member-info {
+        font-size: 0.7em;
+    }
+}

@@ -1,0 +1,83 @@
+.grades-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grades-page h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* 成绩表格样式 */
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.grades-table th,
+.grades-table td {
+    border: 1px solid #e9ecef;
+    padding: 12px;
+    text-align: left;
+}
+
+.grades-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.grades-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* 作业列表样式 */
+.homework-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.homework-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.homework-item h3 {
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.homework-item p {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.homework-item .due-date {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* 新添加的样式 */
+.teacher-actions {
+    margin-bottom: 20px;
+}
+
+.teacher-actions button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.teacher-actions button:hover {
+    background-color: #0056b3;
+}

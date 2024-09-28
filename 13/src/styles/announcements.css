@@ -1,0 +1,56 @@
+#announcements-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#announcements-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.notice-board, .timeline {
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.notice-board {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.timeline {
+    background-color: transparent;
+}
+
+.notice-board h2, .timeline h2 {
+    margin-bottom: 15px;
+}
+
+button {
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.publish-btn {
+    background-color: #28a745;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.add-btn {
+    background-color: #007bff;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* 添加更多样式以匹配原有的布局 */

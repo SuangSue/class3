@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高一三班 - 班级动态</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>高一三班</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="members.html">班级成员</a></li>
+                    <li><a href="announcements.html">班级动态</a></li>
+                    <li><a href="grades.html">成绩与作业</a></li>
+                    <li><a href="resources.html">学习资源</a></li>
+                    <li><a href="activities.html">活动与投票</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="announcements-page">
+            <h2>班级动态</h2>
+            <div id="notice-board">
+                <h3>公告板</h3>
+                <button id="publish-announcement-btn" class="action-btn">发布公告</button>
+                <button id="delete-announcement-btn" class="action-btn">删除公告</button>
+                <div id="notices-container">
+                    <!-- 公告内容将通过 JavaScript 动态添加 -->
+                </div>
+            </div>
+            <div id="timeline">
+                <h3>活动时间轴</h3>
+                <button id="add-timeline-btn" class="action-btn"><i class="fas fa-plus"></i> 添加事件</button>
+                <button id="delete-timeline-btn" class="action-btn"><i class="fas fa-minus"></i> 删除事件</button>
+                <div class="timeline-container">
+                    <!-- 时间轴内容将通过 JavaScript 动态添加 -->
+                </div>
+            </div>
+
+            <!-- 认证弹窗 -->
+            <div id="auth-modal" class="modal">
+                <div class="modal-content">
+                    <h3>请输入认证码</h3>
+                    <input type="password" id="auth-code" placeholder="请输入认证码">
+                    <button id="auth-submit">提交</button>
+                </div>
+            </div>
+
+            <!-- 添加事件弹窗 -->
+            <div id="add-event-modal" class="modal">
+                <div class="modal-content">
+                    <h3>添加事件</h3>
+                    <input type="text" id="event-title" placeholder="标题">
+                    <textarea id="event-content" placeholder="内容"></textarea>
+                    <input type="date" id="event-date">
+                    <input type="file" id="event-images" accept="image/*" multiple>
+                    <button id="event-submit">添加</button>
+                </div>
+            </div>
+
+            <!-- 图片预览弹窗 -->
+            <div id="image-preview-modal" class="modal">
+                <div class="modal-content">
+                    <div id="image-preview-container"></div>
+                </div>
+            </div>
+
+            <!-- 发布公告弹窗 -->
+            <div id="publish-modal" class="modal">
+                <div class="modal-content">
+                    <h3>发布公告</h3>
+                    <input type="text" id="announcement-title" placeholder="标题">
+                    <textarea id="announcement-content" placeholder="内容"></textarea>
+                    <input type="file" id="announcement-image" accept="image/*">
+                    <input type="text" id="announcement-author" placeholder="发布人">
+                    <button id="publish-submit">发布</button>
+                </div>
+            </div>
+
+            <!-- 删除公告弹窗 -->
+            <div id="delete-modal" class="modal">
+                <div class="modal-content">
+                    <h3>删除公告</h3>
+                    <div id="delete-notices-list"></div>
+                    <button id="delete-submit">删除选中的公告</button>
+                </div>
+            </div>
+
+            <!-- 删除事件弹窗 -->
+            <div id="delete-event-modal" class="modal">
+                <div class="modal-content">
+                    <h3>删除事件</h3>
+                    <div id="delete-events-list"></div>
+                    <button id="delete-event-submit">删除选中的事件</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>高一三班是一个充满活力和创造力的集体，我们致力于共同成长、互帮互助。</p>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="members.html">班级成员</a></li>
+                    <li><a href="announcements.html">班级动态</a></li>
+                    <li><a href="grades.html">成绩与作业</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系我们</h3>
+                <p>邮箱：1915491976@qq.com</p>
+                <p>地址：苍南县钱库镇钱库高级中学博约楼高一三班</p>
+                <p>制作：高一三班 电教与信息技术组</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 高一三班 版权所有</p>
+        </div>
+    </footer>
+
+    <script src="announcements.js"></script>
+</body>
+</html>
