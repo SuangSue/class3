@@ -15,31 +15,99 @@ interface ProfileProps {
   user: User;
   onUpdateUser: (updatedUser: User) => void;
   onLogout: () => void;
+  onDebugModeToggle: (isActive: boolean) => void;
 }
 
-const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser, onLogout }) => {
+const MAX_WIDTH = 800; // 设置最大宽度
+const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
+
+const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser, onLogout, onDebugModeToggle }) => {
   const [avatarHover, setAvatarHover] = useState(false);
   const [editingMotto, setEditingMotto] = useState(false);
   const [editingPosition, setEditingPosition] = useState(false);
   const [newMotto, setNewMotto] = useState(user.motto || '');
   const [newPosition, setNewPosition] = useState(user.position || '');
   const navigate = useNavigate();
+  const [showDebugModal, setShowDebugModal] = useState(false);
+  const [debugPassword, setDebugPassword] = useState('');
 
-  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const newAvatar = e.target?.result as string;
-        onUpdateUser({ ...user, avatar: newAvatar });
-      };
-      reader.readAsDataURL(file);
+  const updateLocalStorage = (updatedUser: User) => {
+    try {
+      localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+      
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      users[updatedUser.name] = updatedUser;
+      localStorage.setItem('users', JSON.stringify(users));
+    } catch (error) {
+      console.error('Error updating localStorage:', error);
+      alert('无法保存用户信息。可能是由于存储空间不足。');
     }
   };
 
+  const compressImage = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event: ProgressEvent<FileReader>) => {
+        const img = new Image();
+        img.src = event.target?.result as string;
+        img.onload = () => {
+          const elem = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+
+          elem.width = width;
+          elem.height = height;
+          const ctx = elem.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+          const data = ctx?.canvas.toDataURL('image/jpeg', 0.8);
+          resolve(data as string);
+        };
+        img.onerror = error => reject(error);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
+  const handleAvatarChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      try {
+        let compressedImage: string;
+        if (file.size > MAX_FILE_SIZE) {
+          compressedImage = await compressImage(file);
+        } else {
+          compressedImage = await readFileAsDataURL(file);
+        }
+        const updatedUser = { ...user, avatar: compressedImage };
+        onUpdateUser(updatedUser);
+        updateLocalStorage(updatedUser);
+      } catch (error) {
+        console.error('Error processing image:', error);
+        alert('处理图片时出错，请重试。');
+      }
+    }
+  };
+
+  const readFileAsDataURL = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target?.result as string);
+      reader.onerror = (e) => reject(e);
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleMottoSave = () => {
-    onUpdateUser({ ...user, motto: newMotto });
+    const updatedUser = { ...user, motto: newMotto };
+    onUpdateUser(updatedUser);
     setEditingMotto(false);
+    updateLocalStorage(updatedUser);
   };
 
   const handlePositionSave = () => {
@@ -48,8 +116,26 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser, onLogout }) => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('currentUser');
+    // 不要移除 'users'
     onLogout();
     navigate('/');
+  };
+
+  const handleDebugClick = () => {
+    setShowDebugModal(true);
+  };
+
+  const handleDebugAuth = () => {
+    if (debugPassword === 'xfyyds') {
+      // console.log('Debug mode activated');
+      onDebugModeToggle(true);
+      setShowDebugModal(false);
+      alert('已进入调试模式'); // 添加这行
+    } else {
+      alert('认证失败');
+    }
+    setDebugPassword('');
   };
 
   return (
@@ -131,6 +217,43 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser, onLogout }) => {
         </div>
         <button className="logout-btn" onClick={handleLogout}>登出</button>
       </div>
+      <div className="debug-mode-entry" style={{ marginTop: '20px' }}>
+        <button
+          onClick={handleDebugClick}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'blue',
+            fontSize: '12px',
+            cursor: 'pointer',
+            textDecoration: 'underline'
+          }}
+        >
+          进入调试模式
+        </button>
+      </div>
+      {showDebugModal && (
+        <div className="debug-modal" style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          background: 'white',
+          padding: '20px',
+          boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+          zIndex: 1000
+        }}>
+          <h3>调试模式认证</h3>
+          <input
+            type="password"
+            value={debugPassword}
+            onChange={(e) => setDebugPassword(e.target.value)}
+            placeholder="请输入调试密码"
+          />
+          <button onClick={handleDebugAuth}>确认</button>
+          <button onClick={() => setShowDebugModal(false)}>取消</button>
+        </div>
+      )}
     </div>
   );
 };

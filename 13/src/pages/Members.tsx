@@ -15,6 +15,17 @@ interface MembersData {
   students: Member[];
 }
 
+interface User {
+  name: string;
+  role: string;
+  class?: string;
+}
+
+interface MembersProps {
+  user: User | null;
+  isDebugMode: boolean;
+}
+
 const DEFAULT_AVATAR = 'https://via.placeholder.com/60';
 
 // 学生名单
@@ -28,7 +39,7 @@ const studentList = [
   "章筱语", "胡新诺"
 ];
 
-const Members: React.FC = () => {
+const Members: React.FC<MembersProps> = ({ user, isDebugMode }) => {
   const [members, setMembers] = useState<MembersData>({ teachers: [], students: [] });
 
   useEffect(() => {
@@ -95,8 +106,12 @@ const Members: React.FC = () => {
     }
   };
 
-  const createMemberCard = (member: Member) => (
-    <div className="member-card" key={member.name}>
+  const createMemberCard = (member: Member, index: number) => (
+    <div 
+      className="member-card animate-scaleIn interactive-element" 
+      key={member.name}
+      style={{animationDelay: `${index * 0.05}s`}}
+    >
       <img src={member.avatar} alt={member.name} className="member-avatar" />
       <div className="member-name">{member.name}</div>
       <div className="member-info">
@@ -110,8 +125,8 @@ const Members: React.FC = () => {
     </div>
   );
 
-  const createDesk = (students: Member[]) => (
-    <div className="desk">
+  const createDesk = (students: Member[], index: number) => (
+    <div className="desk" key={`desk-${index}`}>
       {students.map(createMemberCard)}
     </div>
   );
@@ -132,7 +147,7 @@ const Members: React.FC = () => {
           <h3>学生</h3>
           <div id="students-grid">
             {Array.from({ length: Math.ceil(members.students.length / 2) }, (_, i) =>
-              createDesk(members.students.slice(i * 2, i * 2 + 2))
+              createDesk(members.students.slice(i * 2, i * 2 + 2), i)
             )}
           </div>
         </div>

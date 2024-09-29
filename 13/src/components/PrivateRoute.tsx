@@ -9,24 +9,15 @@ interface User {
 
 interface PrivateRouteProps {
   user: User | null;
-  component: React.ComponentType<any>;
+  children: React.ReactNode;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ user, component: Component }) => {
+function PrivateRoute({ user, children }: PrivateRouteProps) {
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" />;
   }
 
-  if (user.role === 'teacher') {
-    // 教师可以访问所有页面
-    return <Component />;
-  }
-
-  if (user.role === 'student' && user.class !== '高一三班') {
-    return <Navigate to="/" replace />;
-  }
-
-  return <Component />;
-};
+  return <>{children}</>;
+}
 
 export default PrivateRoute;

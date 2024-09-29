@@ -6,7 +6,7 @@ function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState<{ type: string; name: string } | null>(null);
 
-  console.log('App rendering');
+  // console.log('App rendering');
 
   const handleLogin = (userType: string, username: string) => {
     setLoggedInUser({ type: userType, name: username });

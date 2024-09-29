@@ -10,6 +10,17 @@ interface Student {
   };
 }
 
+interface User {
+  name: string;
+  role: string;
+  class?: string;
+}
+
+interface PublishGradesProps {
+  user: User | null;
+  isDebugMode: boolean;
+}
+
 const studentList = [
   "陈慧", "陈民豪", "陈鹏", "陈瑞磊", "陈湜", "陈上扬", "陈轩昂", "杜晓晖",
   "方妙可", "郭欣怡", "洪东睿", "黄思晨", "何星磊", "黄子默", "韩致远",
@@ -26,11 +37,12 @@ const subjects = [
 
 const allSubjects = ["语文", "数学", "英语", "政治", "历史", "地理", "物理", "化学", "生物"];
 
-const PublishGrades: React.FC = () => {
+const PublishGrades: React.FC<PublishGradesProps> = ({ user, isDebugMode }) => {
   const [students, setStudents] = useState<Student[]>([]);
   const [subject, setSubject] = useState('');
   const [examDate, setExamDate] = useState('');
   const [examName, setExamName] = useState('');
+  const [publishRanking, setPublishRanking] = useState(true); // 新增：是否公布排名
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,6 +75,7 @@ const PublishGrades: React.FC = () => {
             subject: subj,
             examDate,
             examName,
+            publishRanking, // 新增：是否公布排名
           }))
         : [{
             id: student.id,
@@ -71,6 +84,7 @@ const PublishGrades: React.FC = () => {
             subject,
             examDate,
             examName,
+            publishRanking, // 新增：是否公布排名
           }]
     );
 
@@ -81,9 +95,9 @@ const PublishGrades: React.FC = () => {
   };
 
   return (
-    <div className="publish-grades">
-      <h1>发布成绩</h1>
-      <div className="exam-info">
+    <div className="publish-grades animate-fadeIn">
+      <h1 className="animate-slideInUp">发布成绩</h1>
+      <div className="exam-info animate-slideInUp" style={{animationDelay: '0.1s'}}>
         <select value={subject} onChange={(e) => setSubject(e.target.value)}>
           <option value="">选择科目</option>
           {subjects.map(sub => (
@@ -101,8 +115,18 @@ const PublishGrades: React.FC = () => {
           onChange={(e) => setExamName(e.target.value)}
           placeholder="考试名称"
         />
+        <div className="publish-ranking">
+          <label>
+            <input
+              type="checkbox"
+              checked={publishRanking}
+              onChange={(e) => setPublishRanking(e.target.checked)}
+            />
+            公布班级排名
+          </label>
+        </div>
       </div>
-      <table>
+      <table className="animate-scaleIn" style={{animationDelay: '0.2s'}}>
         <thead>
           <tr>
             <th>姓名</th>
@@ -135,7 +159,7 @@ const PublishGrades: React.FC = () => {
           ))}
         </tbody>
       </table>
-      <button onClick={handleSave}>保存成绩</button>
+      <button onClick={handleSave} className="animate-slideInUp" style={{animationDelay: '0.3s'}}>保存成绩</button>
     </div>
   );
 };

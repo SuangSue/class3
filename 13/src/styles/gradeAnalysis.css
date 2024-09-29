@@ -1,0 +1,279 @@
+.grade-analysis {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.analysis-container {
+  display: flex;
+  gap: 20px;
+}
+
+.student-list {
+  flex: 0 0 300px;
+  border-right: 1px solid #ccc;
+  padding-right: 20px;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.student-button {
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: bold;
+  color: #333;
+  width: 100%; /* 确保所有按钮宽度一致 */
+  text-align: center; /* 文字居中 */
+}
+
+.student-button:hover, .student-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* 新增：班级按钮样式 */
+.class-button {
+  grid-column: 1 / -1; /* 跨越所有列 */
+  background-color: #4CAF50; /* 不同的背景色 */
+  color: white;
+}
+
+.class-button:hover, .class-button.active {
+  background-color: #45a049;
+}
+
+.analysis-view {
+  flex: 1;
+}
+
+.subject-selector {
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  margin-bottom: 20px;
+}
+
+.all-subjects-analysis ul,
+.single-subject-analysis ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.all-subjects-analysis li,
+.single-subject-analysis li {
+  margin-bottom: 15px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.single-subject-analysis,
+.all-subjects-analysis {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .analysis-container {
+    flex-direction: column;
+  }
+
+  .student-list {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding-right: 0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* 保留原有的教师视图样式 */
+
+.class-analysis {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.class-analysis h3,
+.class-analysis h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.class-analysis p {
+  margin-bottom: 10px;
+}
+
+.subject-stats {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* ... 保持其他样式不变 ... */
+
+.student-view {
+  width: 100%;
+}
+
+/* ... 保持其他样式不变 ... */
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  width: 48%;
+}
+
+.pie-chart, .line-chart {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ... 保持其他样式不变 ... */
+
+@media (max-width: 768px) {
+  .charts-container {
+    flex-direction: column;
+  }
+
+  .chart-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* 新增：所有科目成绩区域样式 */
+.all-subjects-grades {
+  background-color: #e9ecef;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.all-subjects-grades h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.all-subjects-grades ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.all-subjects-grades li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ced4da;
+}
+
+.all-subjects-grades li:last-child {
+  border-bottom: none;
+}
+
+/* ... 保持其他样式不变 ... */
+
+.all-subjects-analysis {
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.total-stats, .all-subjects-grades {
+  width: 48%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-container {
+  width: 48%;
+}
+
+.pie-chart, .line-chart {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.all-subjects-grades ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.all-subjects-grades li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ced4da;
+}
+
+.all-subjects-grades li:last-child {
+  border-bottom: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .analysis-content, .charts-container {
+    flex-direction: column;
+  }
+
+  .total-stats, .all-subjects-grades, .chart-container {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* ... 保持其他样式不变 ... */
+
+.back-to-grades {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-grades:hover {
+  background-color: #0056b3;
+}
+
+/* ... 其他样式保持不变 ... */

@@ -85,8 +85,8 @@ const Resources: React.FC = () => {
   };
 
   return (
-    <div id="resources-page">
-      <section id="qa-section">
+    <div id="resources-page" className="animate-fadeIn">
+      <section id="qa-section" className="animate-slideInUp" style={{animationDelay: '0.1s'}}>
         <h2>问答区</h2>
         <form onSubmit={submitQuestion}>
           <input type="text" name="question-title" placeholder="问题标题" required />
@@ -114,7 +114,7 @@ const Resources: React.FC = () => {
           ))}
         </div>
       </section>
-      <section id="resources-section">
+      <section id="resources-section" className="animate-slideInUp" style={{animationDelay: '0.2s'}}>
         <h2>资源共享</h2>
         <form onSubmit={submitResource}>
           <input type="text" name="resource-title" placeholder="资源标题" required />

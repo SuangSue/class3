@@ -1,49 +1,38 @@
 header {
-    background-color: #fff;
+    background-color: #f8f9fa;
+    padding: 10px 0;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 5px 0;
 }
 
 .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .class-name {
-    color: #66b5ff;
-    font-size: 28px;
+    font-size: 1.5em;
     margin: 0;
+    color: #4a90e2; /* 浅蓝色 */
 }
 
 nav {
-    flex-grow: 1;
-    margin-left: 20px;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    justify-content: center;
+    gap: 20px;
 }
 
-nav ul li {
-    margin: 0 10px;
-}
-
-nav ul li a {
+nav a {
     text-decoration: none;
     color: #333;
-    font-size: 16px; /* 增大导航栏文字 */
-    transition: color 0.3s ease;
+    font-weight: bold;
+    transition: color 0.3s ease; /* 添加过渡效果 */
 }
 
-nav ul li a:hover {
-    color: #66b5ff;
+nav a:hover {
+    color: #4a90e2; /* 鼠标悬停时变为浅蓝色 */
 }
 
 .user-actions {
@@ -51,48 +40,26 @@ nav ul li a:hover {
     align-items: center;
 }
 
-.login-btn, .user-profile {
-    padding: 5px 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.login-btn {
-    background-color: #00a1d6;
-    color: white;
-    border: none;
-}
-
-.login-btn:hover {
-    background-color: #0086b3;
-}
-
 .user-profile {
     display: flex;
     align-items: center;
+    text-decoration: none;
     color: #333;
 }
 
 .user-avatar {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    object-fit: cover;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
-@media (max-width: 768px) {
-    .class-name {
-        font-size: 24px;
-    }
-
-    nav ul li a {
-        font-size: 14px; /* 在小屏幕上稍微减小字体大小 */
-    }
-
-    .user-profile span {
-        display: none;
-    }
+.login-btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
+
+/* 移除了 .logout-btn 样式 */

@@ -39,21 +39,38 @@
 #students-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    row-gap: 50px; /* 增加行间距 */
+    justify-content: space-between; /* 改为 space-between */
+    gap: 20px;
+    row-gap: 50px;
 }
 
 .desk {
-    background-color: #ffd700;
+    background-color: #deb887; /* 使用一个木色 */
     border-radius: 10px;
     padding: 20px;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
-    width: calc(25% - 22.5px); /* 调整为每行四张课桌 */
-    min-width: 250px;
+    width: calc(25% - 15px); /* 固定为四列布局 */
+    min-width: 200px;
     margin-bottom: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+    border: 2px solid #a0522d; /* 添加深色边框 */
+    position: relative;
+    overflow: visible; /* 改为 visible，允许内容溢出 */
+}
+
+.desk::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #f4e4d4, #deb887);
+    opacity: 0.5;
+    z-index: 0;
 }
 
 .member-card {
@@ -65,6 +82,7 @@
     transition: transform 0.3s ease;
     width: 45%;
     position: relative;
+    z-index: 1; /* 确保卡片在木纹上层 */
 }
 
 .member-card:hover {
@@ -72,7 +90,7 @@
 }
 
 .member-avatar {
-    width: 60px; /* 稍微减小头像尺寸 */
+    width: 60px;
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
@@ -83,71 +101,96 @@
     font-weight: bold;
     font-size: 0.9em;
     margin-bottom: 5px;
+    cursor: pointer; /* 添加鼠标指针样式 */
 }
 
 .member-info {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 10px;
-    border-radius: 0 0 10px 10px;
-    z-index: 1;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 10;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px; /* 增加宽度 */
+    text-align: center;
+    white-space: normal; /* 允许文本换行 */
+    word-wrap: break-word; /* 长单词换行 */
 }
 
 .member-card:hover .member-info {
     display: block;
 }
 
-@media (max-width: 1200px) {
+/* 确保在大屏幕上始终保持四列布局 */
+@media (min-width: 1201px) {
     .desk {
-        width: calc(33.33% - 20px); /* 三列布局 */
+        width: calc(25% - 15px);
     }
 }
 
-@media (max-width: 992px) {
+/* 在较小的屏幕上调整布局 */
+@media (max-width: 1200px) and (min-width: 993px) {
     .desk {
-        width: calc(50% - 15px); /* 两列布局 */
+        width: calc(33.33% - 13.33px); /* 三列布局 */
+    }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+    .desk {
+        width: calc(50% - 10px); /* 两列布局 */
     }
 }
 
 @media (max-width: 768px) {
     .desk {
         width: 100%;
-        flex-direction: column;
-        align-items: center;
+        padding: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .member-card {
-        width: 80%;
-        margin-bottom: 20px;
+        width: 45%;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    .member-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .member-name {
+        font-size: 0.7em;
+        margin-bottom: 0;
     }
 
     .member-info {
-        position: static;
-        display: block;
-        margin-top: 10px;
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
+    .desk {
+        padding: 5px;
+    }
+
     .member-card {
-        width: 100%;
+        width: 30%;
+        margin-bottom: 5px;
     }
 
     .member-avatar {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
     }
 
     .member-name {
-        font-size: 0.8em;
-    }
-
-    .member-info {
-        font-size: 0.7em;
+        font-size: 0.6em;
     }
 }

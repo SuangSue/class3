@@ -16,6 +16,16 @@ import './styles/grades.css';
 import './styles/login.css';
 import './styles/profile.css';
 import './styles/publishGrades.css';
+import './styles/allGrades.css';
+import './styles/loadingBar.css';
+import './styles/gradeAnalysis.css';
+import './styles/animations.css';
+
+// 添加全局错误处理
+window.onerror = function(message, source, lineno, colno, error) {
+  console.error('Global error:', message, 'at', source, lineno, colno, error);
+  return false;
+};
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
