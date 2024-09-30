@@ -163,6 +163,7 @@ function App() {
                   <GradeAnalysis user={user} isDebugMode={isDebugMode} />
                 </PrivateRoute>
               } />
+              <Route path="*" element={<div>404 Not Found: {window.location.pathname}</div>} />
             </Routes>
           </main>
           <Footer />

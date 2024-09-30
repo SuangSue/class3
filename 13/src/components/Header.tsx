@@ -20,19 +20,28 @@ const Header: React.FC<HeaderProps> = ({ user, isDebugMode }) => {
     setCurrentUser(user);
   }, [user]);
 
+  const navItems = [
+    { name: '首页', path: '/' },
+    { name: '班级成员', path: '/members' },
+    { name: '班级动态', path: '/announcements' },
+    { name: '成绩与作业', path: '/grades' },
+    { name: '学习资源', path: '/resources' },
+    { name: '活动与投票', path: '/activities' }
+  ];
+
   return (
     <header style={{ position: 'relative' }}>
       <div className="header-content">
         <h1 className="class-name">高一三班</h1>
         <nav>
-          {['首页', '班级成员', '班级动态', '成绩与作业', '学习资源', '活动与投票'].map((item, index) => (
+          {navItems.map((item, index) => (
             <Link 
-              key={item} 
-              to={item === '首页' ? '/' : `/${item.toLowerCase().replace(/\s+/g, '-')}`}
-              className="interactive-element"
+              key={item.name} 
+              to={item.path}
+              className="nav-link"
               style={{animationDelay: `${index * 0.1}s`}}
             >
-              {item}
+              {item.name}
             </Link>
           ))}
         </nav>

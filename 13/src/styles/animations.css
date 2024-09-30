@@ -19,7 +19,7 @@
 /* 缩放效果 */
 @keyframes scaleIn {
   from {
-    transform: scale(0.95);
+    transform: scale(0.9);
     opacity: 0;
   }
   to {
@@ -38,7 +38,7 @@
 }
 
 .animate-scaleIn {
-  animation: scaleIn 0.3s ease-out;
+  animation: scaleIn 0.5s ease-out;
 }
 
 /* 交互元素的过渡效果 */
@@ -50,3 +50,10 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+/* 动画延迟类 */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }

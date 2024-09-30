@@ -24,15 +24,19 @@ nav {
     gap: 20px;
 }
 
-nav a {
+.nav-link {
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    transition: color 0.3s ease; /* 添加过渡效果 */
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
-nav a:hover {
-    color: #4a90e2; /* 鼠标悬停时变为浅蓝色 */
+.nav-link:hover {
+    background-color: #4a90e2; /* 使用与 class-name 相同的蓝色 */
+    color: #fff; /* 悬停时文字变为白色 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 添加轻微阴影效果 */
 }
 
 .user-actions {
@@ -58,8 +62,16 @@ nav a:hover {
     text-decoration: none;
     color: #fff;
     background-color: #007bff;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* 移除了 .logout-btn 样式 */
+
+/* ... 其他样式保持不变 */
